@@ -5,8 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
+    "beautiful": "lint-staged",
+    "pre-commit":"lint-staged",
     "sass": "node-sass --watch src/resource/scss --output src/public/css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -18,13 +21,19 @@
     "url": "https://github.com/hoanvptit/nodejs_blog/issues"
   },
   "homepage": "https://github.com/hoanvptit/nodejs_blog#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4"
   },
   "devDependencies": {
+    "lint-staged": "^11.2.2",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",
-    "nodemon": "^2.0.13"
+    "nodemon": "^2.0.13",
+    "prettier": "^2.4.1",
+    "husky": "^7.0.0"
   }
 }
