@@ -4,6 +4,12 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 
 const app = express();
+
+const db = require('./config/db');
+
+//connect to db
+db.connect();
+
 const port = 3000;
 const route = require('./routes');
 
