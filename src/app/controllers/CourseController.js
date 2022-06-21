@@ -15,6 +15,21 @@ class courseController {
             .catch(next);
         // res.send(req.params.slug)
     }
+    //[GET] /courses/create
+    create(req, res, next) {
+        res.render('courses/create');
+    }
+    //[POST] /courses/store
+    store(req, res, next) {
+        const course = new Course(req.body);
+        course.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+        course
+            .save()
+            .then(() => {
+                res.redirect('/');
+            })
+            .catch((error) => {});
+    }
 }
 
 module.exports = new courseController();
